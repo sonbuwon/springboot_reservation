@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/cal}" th:object="${calendar}" method="post">
+    <div>
+        <span>입실 날짜</span>
+        <input name="indate" type="date"/>
+    </div>
+    <div>
+        <span>퇴실 날짜</span>
+        <input name="outdate" type="date"/>
+    </div>
+    <button type="submit">저장</button>
+
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>CheckIn Date</th>
+            <th>CheckOut Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="data, loop : ${list}">
+            <td th:text="${loop.count}"></td>
+            <td th:text="${data.getIndate()}"></td>
+            <td th:text="${data.getOutdate()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
